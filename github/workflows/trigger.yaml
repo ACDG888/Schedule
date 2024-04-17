@@ -1,11 +1,14 @@
-name:Schedule
+name: Every 3 Minutes Workflow
+
 on:
   schedule:
-    - cron: '0 8,16,23 * * *' # Runs every day at 8am, 4pm, and 11pm
+    - cron: '*/3 * * * *' # Runs every 3 minutes
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      # Add more steps here as needed
+    - name: Print Current Time
+      run: |
+        echo "Current time is $(date)"
