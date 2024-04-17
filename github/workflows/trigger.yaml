@@ -1,0 +1,11 @@
+name:Schedule Workflow
+on:
+  schedule:
+    - cron: '0 8,16,23 * * *' # Runs every day at 8am, 4pm, and 11pm
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Add more steps here as needed
