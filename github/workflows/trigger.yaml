@@ -1,14 +1,21 @@
-name: Every 3 Minutes Workflow
+name: Run Schedule Script
 
 on:
   schedule:
     - cron: '*/3 * * * *' # Runs every 3 minutes
 
 jobs:
-  build:
+  run_schedule_script:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Print Current Time
-      run: |
-        echo "Current time is $(date)"
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Execute Schedule.js
+      run: node Schedule.js
