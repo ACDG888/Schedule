@@ -1,17 +1,24 @@
-name: Scheduled README Changes Workflow
+name: Create Directory Workflow
 
 on:
-  schedule:
-    - cron: '*/3 * * * *'
+  push:
+    branches:
+      - main
 
 jobs:
-  check-readme-changes:
+  create-directory:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+      - name: Check current time
+        id: current_time
+        run: echo "::set-output name=time::$(date +%s)"
 
-      - name: Display README contents
-        run: cat README.md
+      - name: Calculate next run time
+        id: next_run_time
+        run: echo "::set-output name=next_time::$(($(echo ${{ steps.current_time.outputs.time }})+180))"
+        
+      - name: Wait until next run time
+        run: sleep $(( ${{ steps.next_run_time.outputs.next_time }} - $(date +%s) ))
 
-      # Add more steps as needed for your workflow
+      - name: Create Directory
+        run: mkdir abc
