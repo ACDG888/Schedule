@@ -1,4 +1,4 @@
-name:Schedule Workflow
+name:Schedule
 on:
   schedule:
     - cron: '0 8,16,23 * * *' # Runs every day at 8am, 4pm, and 11pm
