@@ -1,0 +1,17 @@
+name: Scheduled README Changes Workflow
+
+on:
+  schedule:
+    - cron: '*/3 * * * *'
+
+jobs:
+  check-readme-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Display README contents
+        run: cat README.md
+
+      # Add more steps as needed for your workflow
