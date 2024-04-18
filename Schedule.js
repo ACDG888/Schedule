@@ -1,19 +1,3 @@
-/*function doPost(e) {
-  // Check if the request is coming from the Jira automation
-  if (e && e.parameter && e.parameter.jira_issue_key) {
-    var jiraIssueKey = e.parameter.jira_issue_key;
-
-    // Retrieve the Jira issue details (using the JiraService.getIssue() function)
-    var issue = JiraService.getIssue(jiraIssueKey);
-
-    // Trigger your existing function
-    copyTextToTelegram();
-
-    // Return a response (optional)
-    return ContentService.createTextOutput("Automation request received and processed successfully.");
-  }
-}*/
-
 function copyTextToTelegram() {
   var token = "7191939557:AAEas0aAMV5m09NeoHIDKmXV8MHrrl5ENMo"; // Replace with your Telegram bot token
   //var chatId = "-1001695668649"; //Ops General (Live)
@@ -99,9 +83,4 @@ function sendTelegramMessage(token, chatId, text) {
   
   var response = UrlFetchApp.fetch(url, payload);
   Logger.log(response.getContentText()); // Log response for debugging
-}
-
-function doGet(e) {
-  // This function handles HTTP GET requests
-  return HtmlService.createHtmlOutput("This is a webhook endpoint. Use POST method to send data.");
 }
