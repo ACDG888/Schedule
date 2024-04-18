@@ -1,0 +1,23 @@
+name: Manual Run Schedule Script
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  run_schedule_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20' # Adjust the Node.js version as needed
+
+    - name: Execute Schedule.js
+      run: |
+        echo "Executing Schedule.js"
+        node Schedule.js || exit 1
+        echo "Schedule.js execution completed"
