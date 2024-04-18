@@ -1,0 +1,17 @@
+name: Test Hello World Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_hello_world:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run Hello World Script
+      run: node Schedule/hello.js
